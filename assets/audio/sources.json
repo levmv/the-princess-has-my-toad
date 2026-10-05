@@ -1,0 +1,82 @@
+[
+  {
+    "file": "shot-0.wav",
+    "source": "D_32P.wav",
+    "source_sha256": "acee9d2106b68fe5956225a19d7aedf943d97793817f9bda9d486a2b74b0a812",
+    "start": 0.701,
+    "duration": 0.255,
+    "filters": "pan=mono|c0=0.72*c0+0.28*c1,highpass=f=55,equalizer=f=145:t=q:w=0.85:g=3,lowpass=f=12500",
+    "peak": 0.64,
+    "output_sha256": "d06c3063cb0075a8128cc933b264db309926da171807de3eddcf93c57d18c3b7"
+  },
+  {
+    "file": "shot-1.wav",
+    "source": "D_32P.wav",
+    "source_sha256": "acee9d2106b68fe5956225a19d7aedf943d97793817f9bda9d486a2b74b0a812",
+    "start": 5.645,
+    "duration": 0.255,
+    "filters": "pan=mono|c0=0.72*c0+0.28*c1,highpass=f=55,equalizer=f=145:t=q:w=0.85:g=3,lowpass=f=12500",
+    "peak": 0.64,
+    "output_sha256": "eb680de2ff2805129f316089d14ea25f987734c2833da69b6bcf98546806cf4b"
+  },
+  {
+    "file": "shot-2.wav",
+    "source": "D_32P.wav",
+    "source_sha256": "acee9d2106b68fe5956225a19d7aedf943d97793817f9bda9d486a2b74b0a812",
+    "start": 0.701,
+    "duration": 0.255,
+    "filters": "pan=mono|c0=0.28*c0+0.72*c1,highpass=f=55,equalizer=f=145:t=q:w=0.85:g=3,lowpass=f=12500",
+    "peak": 0.64,
+    "output_sha256": "93c530bba35790cb35eece120817e198f0fde12bf26a6592fa8d1ae03b35f3f4"
+  },
+  {
+    "file": "shot-3.wav",
+    "source": "D_32P.wav",
+    "source_sha256": "acee9d2106b68fe5956225a19d7aedf943d97793817f9bda9d486a2b74b0a812",
+    "start": 5.645,
+    "duration": 0.255,
+    "filters": "pan=mono|c0=0.28*c0+0.72*c1,highpass=f=55,equalizer=f=145:t=q:w=0.85:g=3,lowpass=f=12500",
+    "peak": 0.64,
+    "output_sha256": "10084921d0f96158e7b7ce8a29d1b49ca2f4d9c8a52ff46f62c3ff8359cc611b"
+  },
+  {
+    "file": "jump-0.wav",
+    "source": "3grunt1.wav",
+    "source_sha256": "57b3a59c39ffe74a1706bcb85c451443c3b388d1f6423827b2af4af508c8416b",
+    "start": 0.528,
+    "duration": 0.34,
+    "filters": "pan=mono|c0=0.5*c0+0.5*c1,highpass=f=90,lowpass=f=7500",
+    "peak": 0.6,
+    "output_sha256": "617ed144ac7f3b582a73ecc969d3fa62790d9a8ca515bcf5c4b5b3e7c257c746"
+  },
+  {
+    "file": "jump-1.wav",
+    "source": "3grunt3.wav",
+    "source_sha256": "6006516ae7979896a4053cfc88f26ef575a67133fa0c51de5d9a893498960cc9",
+    "start": 0.018,
+    "duration": 0.425,
+    "filters": "pan=mono|c0=0.5*c0+0.5*c1,highpass=f=90,lowpass=f=7500",
+    "peak": 0.6,
+    "output_sha256": "95882b812c5daff76571bda0e2ff9fb6540709b7ccc777a69acf742428294870"
+  },
+  {
+    "file": "jump-2.wav",
+    "source": "3grunt4.wav",
+    "source_sha256": "4ba97adf030acefa10195f88c3fb329ebbea2c9638bd412896e1b4fc0ca35404",
+    "start": 0.267,
+    "duration": 0.185,
+    "filters": "pan=mono|c0=0.5*c0+0.5*c1,highpass=f=90,lowpass=f=7500",
+    "peak": 0.6,
+    "output_sha256": "d9e68a50903ff5562ce070ce511579e4d23ee176d95d4c884f26083f5c07f074"
+  },
+  {
+    "file": "jump-3.wav",
+    "source": "3grunt5.wav",
+    "source_sha256": "32705e7835d0cdce3eb6e9d3a512ef128ee6c50564bd53bb0723b4474be85181",
+    "start": 0.148,
+    "duration": 0.345,
+    "filters": "pan=mono|c0=0.5*c0+0.5*c1,highpass=f=90,lowpass=f=7500",
+    "peak": 0.6,
+    "output_sha256": "72108b32cbcc2c2a5c51bf783adc9da58666a49922e977fb795e65e465ec1c13"
+  }
+]

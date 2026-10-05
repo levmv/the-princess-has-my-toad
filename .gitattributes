@@ -1,0 +1,9 @@
+* text=auto
+*.odin text eol=lf
+*.sh text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+*.md text eol=lf
+*.wav binary
+*.ttf binary
+*.mid binary

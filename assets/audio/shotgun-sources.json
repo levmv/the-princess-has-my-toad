@@ -1,0 +1,54 @@
+[
+  {
+    "file": "shotgun-0.wav",
+    "source": "O_21P.wav",
+    "start": 0.4285,
+    "filters": "pan=mono|c0=0.62*c0+0.38*c1,aresample=32000,highpass=f=42,equalizer=f=165:t=q:w=0.8:g=5,lowpass=f=11500",
+    "source_sha256": "5661d0625e4634f19e6e316c13693b80c8e28cd9f716cf9c75c465153ae40815",
+    "duration": 0.78,
+    "rate": 32000,
+    "peak": 0.82,
+    "seed": 941,
+    "processing": "Recorded crack/body, stretched low-mid layer, diffuse early reflections, pressure noise, rack/lock, DC filter, normalization, boundary fades; prepare-shotgun-audio.py",
+    "output_sha256": "96b805b67b65fb3362338f7505ea1442ce22e9a065744dbabb67fa1f98702555"
+  },
+  {
+    "file": "shotgun-1.wav",
+    "source": "K_22P.wav",
+    "start": 0.8415,
+    "filters": "pan=mono|c0=0.58*c0+0.42000000000000004*c1,aresample=32000,highpass=f=42,equalizer=f=165:t=q:w=0.8:g=5,lowpass=f=11500",
+    "source_sha256": "ea19e9a0be4686054847a58b0a43f6be82fbe65345489f41aa02dbcf166d34d0",
+    "duration": 0.78,
+    "rate": 32000,
+    "peak": 0.82,
+    "seed": 942,
+    "processing": "Recorded crack/body, stretched low-mid layer, diffuse early reflections, pressure noise, rack/lock, DC filter, normalization, boundary fades; prepare-shotgun-audio.py",
+    "output_sha256": "07de58e78eb3e110661a524273842105d08f81a2f2c33ca2fcd21be8c484e1e5"
+  },
+  {
+    "file": "shotgun-2.wav",
+    "source": "O_21P.wav",
+    "start": 3.4634,
+    "filters": "pan=mono|c0=0.44*c0+0.56*c1,aresample=32000,highpass=f=42,equalizer=f=165:t=q:w=0.8:g=5,lowpass=f=11500",
+    "source_sha256": "5661d0625e4634f19e6e316c13693b80c8e28cd9f716cf9c75c465153ae40815",
+    "duration": 0.78,
+    "rate": 32000,
+    "peak": 0.82,
+    "seed": 943,
+    "processing": "Recorded crack/body, stretched low-mid layer, diffuse early reflections, pressure noise, rack/lock, DC filter, normalization, boundary fades; prepare-shotgun-audio.py",
+    "output_sha256": "93374e2efb8f80cac2ce29da4ea53e0cf30c4dd7e8bbc20d16f1b7384ea422c5"
+  },
+  {
+    "file": "shotgun-3.wav",
+    "source": "K_22P.wav",
+    "start": 7.4445,
+    "filters": "pan=mono|c0=0.48*c0+0.52*c1,aresample=32000,highpass=f=42,equalizer=f=165:t=q:w=0.8:g=5,lowpass=f=11500",
+    "source_sha256": "ea19e9a0be4686054847a58b0a43f6be82fbe65345489f41aa02dbcf166d34d0",
+    "duration": 0.78,
+    "rate": 32000,
+    "peak": 0.82,
+    "seed": 944,
+    "processing": "Recorded crack/body, stretched low-mid layer, diffuse early reflections, pressure noise, rack/lock, DC filter, normalization, boundary fades; prepare-shotgun-audio.py",
+    "output_sha256": "1c8bb833675b615599cd07bb40f1f5567584d65ced66a01a3bf31ca085fb944b"
+  }
+]

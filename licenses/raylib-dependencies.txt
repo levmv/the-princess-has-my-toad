@@ -1,0 +1,62 @@
+The following table lists the raylib dependencies. Most of them are single-file header-only public-domain libraries. All those libraries are included with raylib in [`src/external`](https://github.com/raysan5/raylib/tree/master/src/external) directory and they are compiled with raylib.
+
+**NOTE**: *Last updated on 4th February 2023 for the raylib 4.5 release.*
+
+Library | Version | License | raylib module | Notes/Comments
+--- | :---: | :--- | :---: | ---
+[GLFW3](https://github.com/glfw/glfw) | 3.5.1 | [zlib/libpng](https://github.com/glfw/glfw/blob/master/LICENSE.md) | [rglfw](https://github.com/raysan5/raylib/blob/master/src/rglfw.c) | Window and input management, only on `PLATFORM_DESKTOP`
+[glad.h](https://github.com/Dav1dde/glad) | 2.0.0-beta | [MIT](https://github.com/Dav1dde/glad/blob/glad2/LICENSE) | [rlgl](https://github.com/raysan5/raylib/blob/master/src/rlgl.c) | OpenGL extensions loading, only on `PLATFORM_DESKTOP` and `OpenGL 4.3 Core`
+[glad_gles2.h](https://github.com/Dav1dde/glad) | 2.0.2 | [MIT](https://github.com/Dav1dde/glad/blob/glad2/LICENSE) | [rlgl](https://github.com/raysan5/raylib/blob/master/src/rlgl.c) | OpenGL extensions loading, only on `PLATFORM_DESKTOP` and `OpenGL ES 2.0`
+[sdefl.h](https://github.com/vurtun/lib/blob/master/sdefl.h) | 1.00 | [MIT/public domain](https://github.com/raysan5/raylib/blob/master/src/external/sdefl.h) | [rcore](https://github.com/raysan5/raylib/blob/master/src/rcore.c) | DEFLATE compression algorithm
+[sinfl.h](https://github.com/vurtun/lib/blob/master/sinfl.h) | 1.00 | [MIT/public domain](https://github.com/raysan5/raylib/blob/master/src/external/sinfl.h) | [rcore](https://github.com/raysan5/raylib/blob/master/src/rcore.c) | DEFLATE decompression algorithm
+[rprand](https://github.com/raysan5/raylib/tree/master/src/external/rprand.h) | 1.0 | zlib/libpng | [rcore](https://github.com/raysan5/raylib/blob/master/src/rcore.c) | Pseudo-random numbers generator
+[stb_image](https://github.com/nothings/stb) | 2.30 | [MIT/public domain](https://github.com/raysan5/raylib/blob/master/src/external/stb_image.h) | [rtextures](https://github.com/raysan5/raylib/blob/master/src/rtextures.c) | Multiple image formats loading
+[stb_image_resize2](https://github.com/nothings/stb) | 2.18 | [MIT/public domain](https://github.com/raysan5/raylib/blob/master/src/external/stb_image_resize2.h) | [rtextures](https://github.com/raysan5/raylib/blob/master/src/rtextures.c) | Image resizing functions
+[stb_image_write](https://github.com/nothings/stb) | 1.16 | [MIT/public domain](https://github.com/raysan5/raylib/blob/master/src/external/stb_image_write.h) | [rtextures](https://github.com/raysan5/raylib/blob/master/src/rtextures.c) | Image writing to multiple formats
+[stb_perlin](https://github.com/nothings/stb) | 0.5 | [MIT/public domain](https://github.com/raysan5/raylib/blob/master/src/external/stb_perlin.h) | [rtextures](https://github.com/raysan5/raylib/blob/master/src/rtextures.c) | Simplex Perlin noise generation
+[qoi](https://github.com/phoboslab/qoi) | - | [MIT](https://github.com/phoboslab/qoi/blob/master/LICENSE) | [rtextures](https://github.com/raysan5/raylib/blob/master/src/rtextures.c) | QOI image data loading and saving
+[rl_gputex](https://github.com/raysan5/raylib/tree/master/src/external/rl_gputex.h) | 1.0 | zlib/libpng | [rtextures](https://github.com/raysan5/raylib/blob/master/src/rtextures.c) | Compressed textures data loading
+[stb_truetype](https://github.com/nothings/stb) | 1.26 | [MIT/public domain](https://github.com/raysan5/raylib/blob/master/src/external/stb_truetype.h) | [rtext](https://github.com/raysan5/raylib/blob/master/src/rtext.c) | TTF/OTF fonts data loading
+[stb_rect_pack](https://github.com/nothings/stb) | 1.01 | [MIT/public domain](https://github.com/raysan5/raylib/blob/master/src/external/stb_rect_pack.h) | [rtext](https://github.com/raysan5/raylib/blob/master/src/rtext.c) | Rectangles packer, used on font packing
+[miniaudio](https://github.com/mackron/miniaudio) | 0.11.24 | [MIT/public domain](https://github.com/raysan5/raylib/blob/master/src/external/miniaudio.h) | [raudio](https://github.com/raysan5/raylib/blob/master/src/raudio.c) | Audio device management
+[stb_vorbis](https://github.com/nothings/stb) | 1.22 | [MIT/public domain](https://github.com/raysan5/raylib/blob/master/src/external/stb_vorbis.c) | [raudio](https://github.com/raysan5/raylib/blob/master/src/raudio.c) | OGG audio data loading
+[dr_wav](https://github.com/mackron/dr_libs) | 0.14.5 | [MIT/public domain](https://github.com/raysan5/raylib/blob/master/src/external/dr_wav.h) | [raudio](https://github.com/raysan5/raylib/blob/master/src/raudio.c) | WAV audio data loading
+[dr_mp3](https://github.com/mackron/dr_libs) | 0.7.4 | [MIT/public domain](https://github.com/raysan5/raylib/blob/master/src/external/dr_mp3.h) | [raudio](https://github.com/raysan5/raylib/blob/master/src/raudio.c) | MP3 audio data loading
+[dr_flac](https://github.com/mackron/dr_libs) | 0.13.3 | [MIT/public domain](https://github.com/raysan5/raylib/blob/master/src/external/dr_flac.h) | [raudio](https://github.com/raysan5/raylib/blob/master/src/raudio.c) | FLAC audio data loading
+[jar_mod](https://github.com/raysan5/raylib/blob/master/src/external/jar_mod.h) | 0.01 | [public domain](https://github.com/raysan5/raylib/blob/master/src/external/jar_mod.h) | [raudio](https://github.com/raysan5/raylib/blob/master/src/raudio.c) | MOD audio module loading, based on [HxCModPlayer](https://github.com/jfdelnero/HxCModPlayer)
+[jar_xm](https://github.com/raysan5/raylib/blob/master/src/external/jar_xm.h) | 0.3.1 | [public domain](https://github.com/raysan5/raylib/blob/master/src/external/jar_xm.h) | [raudio](https://github.com/raysan5/raylib/blob/master/src/raudio.c) | XM audio module loading, based on [libxm](https://github.com/Artefact2/libxm)
+[qoa](https://github.com/phoboslab/qoa) | - | [MIT](https://github.com/phoboslab/qoa/blob/master/LICENSE) | [raudio](https://github.com/raysan5/raylib/blob/master/src/raudio.c) | QOA audio data loading and saving
+[par_shapes](https://github.com/prideout/par/blob/master/par_shapes.h) | - | [MIT](https://github.com/raysan5/raylib/blob/master/src/external/par_shapes.h) | [rmodels](https://github.com/raysan5/raylib/blob/master/src/rmodels.c) | Geometric shapes generation
+[tinyobj_loader_c](https://github.com/syoyo/tinyobjloader-c) | - | [MIT](https://github.com/raysan5/raylib/blob/master/src/external/tinyobj_loader_c.h) | [rmodels](https://github.com/raysan5/raylib/blob/master/src/rmodels.c) | OBJ/MTL data loading
+[cgltf](https://github.com/jkuhlmann/cgltf) | 1.15 | [MIT](https://github.com/raysan5/raylib/blob/master/src/external/cgltf.h) | [rmodels](https://github.com/raysan5/raylib/blob/master/src/rmodels.c) | glTF models data loading
+[cgltf_write](https://github.com/jkuhlmann/cgltf) | 1.15 | [MIT](https://github.com/raysan5/raylib/blob/master/src/external/cgltf_write.h) | [rmodels](https://github.com/raysan5/raylib/blob/master/src/rmodels.c) | glTF models data writer
+[vox_loader](https://github.com/raysan5/raylib/blob/master/src/external/vox_loader.h) | 1.01 | [MIT](https://github.com/raysan5/raylib/blob/master/src/external/vox_loader.h) | [rmodels](https://github.com/raysan5/raylib/blob/master/src/rmodels.c) | VOX models data loading
+[m3d](https://bztsrc.gitlab.io/model3d/) | 1.0.0 | [MIT](https://gitlab.com/bztsrc/model3d/-/blob/master/LICENSE) | [rmodels](https://github.com/raysan5/raylib/blob/master/src/rmodels.c) | M3D models data loading
+
+ - NOTE 1: Most of these libraries are only used to load some specific file format (image, font, audio, model).
+ - NOTE 2: Some of the dependencies are specific to only one of the platforms that raylib supports or even to some specific compiler (i.e. `dirent`).
+ - NOTE 3: All the libraries licenses should allow raylib to be used on commercial projects without problem.
+
+### Platform specific dependency notes
+
+ - `PLATFORM_DESKTOP`: raylib uses on [rcore](https://github.com/raysan5/raylib/blob/master/src/rcore.c) module the outstanding [GLFW3](http://www.glfw.org/) library, embedded in the form of [rglfw](https://github.com/raysan5/raylib/blob/master/src/rglfw.c). For more details on GLFW usage, check [GLFW dependency Wiki page](https://github.com/raysan5/raylib/wiki/raylib-GLFW-dependency).
+
+ - `PLATFORM_ANDROID`: raylib uses on [rcore](https://github.com/raysan5/raylib/blob/master/src/rcore.c) module the `native_app_glue` library (provided by Android NDK). Also, native Android libraries are used to manage window/context, inputs and activity life cycle.
+
+ - `PLATFORM_DRM`: raylib uses on [rcore](https://github.com/raysan5/raylib/blob/master/src/rcore.c) module the native `DRM subsystem` and `GBM API` libraries for window/context management. Inputs are processed using `evdev` Linux libraries.
+
+ - `PLATFORM_WEB`: raylib uses on [rcore](https://github.com/raysan5/raylib/blob/master/src/rcore.c) module the `emscripten SDK` provided libraries for several input events management, specially noticeable the touch events support.
+
+There are also some platform-specific system libraries that do need to be linked when compiling [raylib examples](https://github.com/raysan5/raylib/tree/master/examples). The following table lists the required system libraries.
+
+PLATFORM | platform dependencies | Notes
+--- | :---: | ---
+`PLATFORM_DESKTOP:Windows` | `OpenGL`, `GDI32`, `WinMM`, `user32`, `kernel32` | Required for window creation. Note that `WinMM` is only used to get a hi-res timer and it can be avoided commenting [`SUPPORT_WINMM_HIGHRES_TIMER`](https://github.com/raysan5/raylib/blob/master/src/config.h#L56) config flag.
+`PLATFORM_DESKTOP:Linux` | `OpenGL`, `X11` | Also requires linkage with `libm`(math), `pthreads`(POSIX threads), `dl`(dynamic loading), `rt` (realtime extensions: `nanosleep()`) and `X11` specific libs: `X11`, `Xrandr`, `Xinerama`, `Xi`, `Xxf86vm` and `Xcursor`
+`PLATFORM_DESKTOP:FreeBSD` | `OpenGL`, `X11` | Also requires linkage with `libm`(math), `pthreads`(POSIX threads), `dl`(dynamic loading), `rt` (realtime extensions: `nanosleep()`) and `X11` window system specific libs: `X11`, `Xrandr`, `Xinerama`, `Xi`, `Xxf86vm` and `Xcursor`
+`PLATFORM_DESKTOP:macOS` | `OpenGL`, `Cocoa`, `IOKit`, `CoreAudio`, `CoreVideo` | Required for window creation
+`PLATFORM_ANDROID` | `EGL`, `OpenGLES2.0`, `OpenSLES` | Code must be compiled using `Android NDK` libraries. Requires linkage with `native_app_glue`, `log`, `android`, `atomic`, `libc`, `libm`(math) and `dl`(dynamic loading)
+`PLATFORM_DRM` | `EGL`, `OpenGLES2.0`, `DRM`, `GBM` | Graphics run in native mode using `DRM` (no `XWindows` required) and inputs are also natively read (no `XWindows` input events), also requires linkage with `libm`(math), `pthreads`(POSIX threads), `rt` (realtime extensions: `nanosleep()`) and `dl`(dynamic loading).
+`PLATFORM_WEB` | `WebGL` | Code must be compiled using `emscripten SDK`, dependencies linkage is automatically detected.
+
+raylib is [highly modular by design](https://github.com/raysan5/raylib/wiki/raylib-architecture). Many modules can be omitted when they are not being used, and consequently, the libraries used by those modules will also be redundant.

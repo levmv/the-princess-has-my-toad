@@ -1,0 +1,41 @@
+{
+  "author": "Cici Fyre (cicifyre)",
+  "license": "CC0 1.0",
+  "url": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+  "archive_sha256": "6ad46457e66c25e1318f2d45251afc549df22c3cab05b553dd6717ca2a1c7d04",
+  "clips": [
+    {
+      "file": "lora-jump-0.wav",
+      "source": "RPG Voice Starter Pack/Type 3/jump1.wav",
+      "source_sha256": "1722251f1da623b53fe2d6ba183e78373a9514a9c86444215a8157a8257b0f92",
+      "start_sample": 480,
+      "end_sample": 5120,
+      "rate": 32000,
+      "peak": 0.6,
+      "filters": "highpass=f=90,lowpass=f=7500",
+      "output_sha256": "071623280f5b26de1b4e7c8b48440bd838898050b81afcae8b332970c7a669ea"
+    },
+    {
+      "file": "lora-jump-1.wav",
+      "source": "RPG Voice Starter Pack/Type 3/jump2.wav",
+      "source_sha256": "3cb63529d597a37ffc754e1c553b2d9fc5a704ff5296df84015d7946c923356b",
+      "start_sample": 800,
+      "end_sample": 6080,
+      "rate": 32000,
+      "peak": 0.6,
+      "filters": "highpass=f=90,lowpass=f=7500",
+      "output_sha256": "ada55a3a30e396ed2a0ea98d55ce2a6ed3b60546f6f57eb26c2e158ae497ce79"
+    },
+    {
+      "file": "lora-jump-2.wav",
+      "source": "RPG Voice Starter Pack/Type 3/jump3.wav",
+      "source_sha256": "cb8e1a472afbb2f8d577a4521b3b7dfb28359ac870a30f364b57c139f9d436ad",
+      "start_sample": 640,
+      "end_sample": 8480,
+      "rate": 32000,
+      "peak": 0.6,
+      "filters": "highpass=f=90,lowpass=f=7500",
+      "output_sha256": "9f7e9833706b8d31e3379b08a98f738ea9cc86e5092b76fe8d1c93c6385969aa"
+    }
+  ]
+}

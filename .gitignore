@@ -1,0 +1,27 @@
+# Local toolchains, downloaded originals and generated output.
+/.tools/
+/downloads/
+/build/
+
+# Private design and development notes.
+/DESIGN.md
+/docs/
+
+# Local editor/assistant/environment state.
+/.agents/
+/.codex/
+/.aws
+/.env
+/.env.*
+*~
+*.swp
+.DS_Store
+
+# Compiler and Python caches, including ad-hoc local checks.
+__pycache__/
+*.py[cod]
+*.o
+*.obj
+*.wasm
+*.rdi
+*.pdb

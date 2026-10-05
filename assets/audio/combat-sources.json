@@ -1,0 +1,206 @@
+[
+  {
+    "file": "flesh-0.wav",
+    "layers": [
+      {
+        "source": "combat/squish-1.mp3",
+        "sha256": "bdd0eeddf7cdd1805e0bc65232c6bb3fda2c21228509816b22c0847a3773ce36",
+        "filters": "atrim=start=0.022,highpass=f=110,lowpass=f=5500",
+        "gain": 1
+      }
+    ],
+    "duration": 0.2,
+    "rate": 22050,
+    "peak": 0.52,
+    "sha256": "e07950f577acc86187fe74840bbd68734acfc3d00c5b856b3df2c9d468dd5d19"
+  },
+  {
+    "file": "gib-0.wav",
+    "layers": [
+      {
+        "source": "combat/squish-1.mp3",
+        "sha256": "bdd0eeddf7cdd1805e0bc65232c6bb3fda2c21228509816b22c0847a3773ce36",
+        "filters": "atrim=start=0.022,asetrate=22050*0.80,aresample=22050,highpass=f=65,lowpass=f=6500",
+        "gain": 1
+      }
+    ],
+    "duration": 0.36,
+    "rate": 22050,
+    "peak": 0.73,
+    "sha256": "eab8c466ff050591bfa3eb1186303a9ea7887810867328c4fb2c3af83375fa94"
+  },
+  {
+    "file": "fae-death-0.wav",
+    "layers": [
+      {
+        "source": "female-rpg/RPG Voice Starter Pack/Type 1/damaged1.wav",
+        "sha256": "b3e564ac29084630da9483747bc75baba8bd1fdf9bc9f594d67416ac147475d2",
+        "filters": "atempo=0.64,highpass=f=220,lowpass=f=7500",
+        "gain": 1.7
+      },
+      {
+        "source": "combat/zombieDeath1.wav",
+        "sha256": "f32b96086c4e23e568508bd0542bfdadb34ef0d5dc1fef9094b82dc18aa1c623",
+        "filters": "atrim=start=0.02,asetrate=44100*1.30,aresample=22050,highpass=f=250,lowpass=f=4200",
+        "gain": 0.17
+      }
+    ],
+    "duration": 0.62,
+    "rate": 22050,
+    "peak": 0.67,
+    "sha256": "f4ff09d84e9aab141bf9c6efb0cb9c8c60b1803cc0fe38e63887252343bfa999"
+  },
+  {
+    "file": "flesh-1.wav",
+    "layers": [
+      {
+        "source": "combat/squish-2.mp3",
+        "sha256": "ce1fa4e8d3e0b0feb953f62adc8fee007db8cd9c487bf8a8d0e79ecbdcf000d4",
+        "filters": "atrim=start=0.022,highpass=f=110,lowpass=f=5500",
+        "gain": 1
+      }
+    ],
+    "duration": 0.2,
+    "rate": 22050,
+    "peak": 0.52,
+    "sha256": "3230408df3a8e27b440593853f2a4341efa2e2278b9d5517d3907aa90661d358"
+  },
+  {
+    "file": "gib-1.wav",
+    "layers": [
+      {
+        "source": "combat/squish-2.mp3",
+        "sha256": "ce1fa4e8d3e0b0feb953f62adc8fee007db8cd9c487bf8a8d0e79ecbdcf000d4",
+        "filters": "atrim=start=0.022,asetrate=22050*0.80,aresample=22050,highpass=f=65,lowpass=f=6500",
+        "gain": 1
+      }
+    ],
+    "duration": 0.36,
+    "rate": 22050,
+    "peak": 0.73,
+    "sha256": "133969d4b044a6609a4252dfb9d8f8899ee9cc9555cd51e4492679bb7068bff7"
+  },
+  {
+    "file": "fae-death-1.wav",
+    "layers": [
+      {
+        "source": "female-rpg/RPG Voice Starter Pack/Type 1/damaged2.wav",
+        "sha256": "8bea91683584bdf496062be02dc847630b5bf1a77d124c618a442484eb8edbd9",
+        "filters": "atempo=0.64,highpass=f=220,lowpass=f=7500",
+        "gain": 1.7
+      },
+      {
+        "source": "combat/zombieDeath2.wav",
+        "sha256": "e84d3d060439504e07c564a13bd57d55a575dc28c8f2af32f19a1b23514d538d",
+        "filters": "atrim=start=0.02,asetrate=44100*1.30,aresample=22050,highpass=f=250,lowpass=f=4200",
+        "gain": 0.17
+      }
+    ],
+    "duration": 0.62,
+    "rate": 22050,
+    "peak": 0.67,
+    "sha256": "814fc50e7ec027d4585e7a303d0060f9d6650848e636ba9782b1224ebf5f8cc5"
+  },
+  {
+    "file": "flesh-2.wav",
+    "layers": [
+      {
+        "source": "combat/squish-4.mp3",
+        "sha256": "540fcb459d1153c06929c74afcb299035291f67e1fc87fbf6d848ae5211378cd",
+        "filters": "atrim=start=0.022,highpass=f=110,lowpass=f=5500",
+        "gain": 1
+      }
+    ],
+    "duration": 0.2,
+    "rate": 22050,
+    "peak": 0.52,
+    "sha256": "0dcf83cfb9d5c4b1f590c4f060f9cddbbf9154352df75b7fe84f86a6e5ff8384"
+  },
+  {
+    "file": "gib-2.wav",
+    "layers": [
+      {
+        "source": "combat/squish-4.mp3",
+        "sha256": "540fcb459d1153c06929c74afcb299035291f67e1fc87fbf6d848ae5211378cd",
+        "filters": "atrim=start=0.022,asetrate=22050*0.80,aresample=22050,highpass=f=65,lowpass=f=6500",
+        "gain": 1
+      }
+    ],
+    "duration": 0.36,
+    "rate": 22050,
+    "peak": 0.73,
+    "sha256": "36ca4c0c792f783042d778390f84f93104f9078c33e900df35e55461e8fb6962"
+  },
+  {
+    "file": "fae-death-2.wav",
+    "layers": [
+      {
+        "source": "female-rpg/RPG Voice Starter Pack/Type 1/damaged3.wav",
+        "sha256": "a51edde4798a5e472127a683981277723704db90079d2296f6451c594d2efd3b",
+        "filters": "atempo=0.64,highpass=f=220,lowpass=f=7500",
+        "gain": 1.7
+      },
+      {
+        "source": "combat/zombieDeath3.wav",
+        "sha256": "9fb3eecfeef887007b8f737e663ef52cf6e8419b46011eb04e0775f1d78a1db8",
+        "filters": "atrim=start=0.02,asetrate=44100*1.30,aresample=22050,highpass=f=250,lowpass=f=4200",
+        "gain": 0.17
+      }
+    ],
+    "duration": 0.62,
+    "rate": 22050,
+    "peak": 0.67,
+    "sha256": "9046d3d7fbc34f24689887765436d190dfeea03038506a0e13d223d77eac86e8"
+  },
+  {
+    "file": "flesh-3.wav",
+    "layers": [
+      {
+        "source": "combat/squish-5.mp3",
+        "sha256": "c0dd61fa1ada83dc805b70fcd94a5ffaff9fb0959d46ba1b2c95f21130a3fc6b",
+        "filters": "atrim=start=0.022,highpass=f=110,lowpass=f=5500",
+        "gain": 1
+      }
+    ],
+    "duration": 0.2,
+    "rate": 22050,
+    "peak": 0.52,
+    "sha256": "09d047d5d6c131e6f981b6c768bccd3413444b04a49480ea30296bfa5642a0c9"
+  },
+  {
+    "file": "gib-3.wav",
+    "layers": [
+      {
+        "source": "combat/squish-5.mp3",
+        "sha256": "c0dd61fa1ada83dc805b70fcd94a5ffaff9fb0959d46ba1b2c95f21130a3fc6b",
+        "filters": "atrim=start=0.022,asetrate=22050*0.80,aresample=22050,highpass=f=65,lowpass=f=6500",
+        "gain": 1
+      }
+    ],
+    "duration": 0.36,
+    "rate": 22050,
+    "peak": 0.73,
+    "sha256": "1e08ae629bacc319291e670c5b26352ac650c98133383f6d0170b09bfaa8ad02"
+  },
+  {
+    "file": "fae-death-3.wav",
+    "layers": [
+      {
+        "source": "female-rpg/RPG Voice Starter Pack/Type 1/damaged1.wav",
+        "sha256": "b3e564ac29084630da9483747bc75baba8bd1fdf9bc9f594d67416ac147475d2",
+        "filters": "atempo=0.64,highpass=f=220,lowpass=f=7500",
+        "gain": 1.7
+      },
+      {
+        "source": "combat/zombieDeath4.wav",
+        "sha256": "10437ee9e240e6b0d0c910f4586b89f306565c1e97ef7eca2bb0e11a3d6c76a2",
+        "filters": "atrim=start=0.02,asetrate=44100*1.30,aresample=22050,highpass=f=250,lowpass=f=4200",
+        "gain": 0.17
+      }
+    ],
+    "duration": 0.62,
+    "rate": 22050,
+    "peak": 0.67,
+    "sha256": "97bb8ad8fb04c1d7130cf1c2f2918bebfbdce01e5e552ec7c7ba485704138721"
+  }
+]

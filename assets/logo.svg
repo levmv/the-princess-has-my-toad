@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="664" height="200" viewBox="0 0 664 200">
+  <title>TOAD</title>
+  <defs>
+    <path id="letters" fill-rule="evenodd" d="M12 14H155L151 57H111L103 164 55 176 62 57H20Z
+      M190 14H276L302 39 292 149 267 172H171L154 149 166 39ZM205 57 196 128H241L249 57Z
+      M349 14H410L468 176 417 165 406 135H350L338 165 288 176ZM375 57 359 101H393Z
+      M483 14H584L619 43 629 149 606 178 491 165ZM532 58 536 132 569 136 581 123 575 72 560 58Z"/>
+    <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#f2e3b5"/>
+      <stop offset=".09" stop-color="#b8c2ae"/>
+      <stop offset=".43" stop-color="#5e7a77"/>
+      <stop offset=".49" stop-color="#2a484c"/>
+      <stop offset=".51" stop-color="#e4ad66"/>
+      <stop offset=".67" stop-color="#bb783e"/>
+      <stop offset="1" stop-color="#633426"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#fff0be"/>
+      <stop offset=".48" stop-color="#9ba68d"/>
+      <stop offset=".51" stop-color="#e9b979"/>
+      <stop offset="1" stop-color="#ad693d"/>
+    </linearGradient>
+    <linearGradient id="depth" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#39413b"/>
+      <stop offset=".5" stop-color="#1b2727"/>
+      <stop offset="1" stop-color="#503527"/>
+    </linearGradient>
+    <clipPath id="face"><use href="#letters"/></clipPath>
+  </defs>
+  <g stroke-linejoin="miter">
+    <use href="#letters" transform="translate(13 13)" fill="#090f10" stroke="#090f10" stroke-width="9"/>
+    <use href="#letters" transform="translate(10 10)" fill="url(#depth)" stroke="#151e1c" stroke-width="4"/>
+    <use href="#letters" transform="translate(7 7)" fill="url(#depth)" stroke="#38443b" stroke-width="2"/>
+    <use href="#letters" transform="translate(4 4)" fill="url(#depth)" stroke="#172321" stroke-width="2"/>
+    <use href="#letters" fill="url(#metal)" stroke="#182521" stroke-width="7"/>
+    <use href="#letters" fill="url(#metal)" stroke="url(#edge)" stroke-width="2.5"/>
+  </g>
+  <g clip-path="url(#face)" fill="none">
+    <path d="M25 21H146M188 21H271L289 40M354 21H405M492 21H580L606 44" stroke="#ffefc4" stroke-width="2" opacity=".75"/>
+    <path d="M27 50H68L61 163M198 52 186 132 196 138H241M355 108H401M528 52 532 139 570 144" stroke="#142c2d" stroke-width="3" opacity=".65"/>
+    <path d="M117 25 104 34 96 49M176 118 187 101M266 148 276 134M320 153 332 148M423 99 437 88M542 34 555 30M604 135 593 146" stroke="#192d2d" stroke-width="2" opacity=".7"/>
+    <path d="M118 25 106 35M177 118 188 101M266 149 277 135M320 154 331 150M424 100 438 89M543 35 555 31M605 136 594 147" stroke="#eac78c" stroke-width="1" opacity=".5"/>
+    <path d="M18 79H636M18 83H636M18 87H636" stroke="#112b2d" opacity=".12"/>
+    <path d="M34 30H75M82 42H119M181 60 185 41M261 86 264 66M178 145H210M350 31H367M401 118H424M315 167 331 161M515 40H548M598 75 601 92M549 151 582 155" stroke="#ecdbad" stroke-width=".8" opacity=".25"/>
+  </g>
+  <g fill="#233634" stroke="#bbc09a" stroke-width="1">
+    <circle cx="34" cy="33" r="3"/><circle cx="134" cy="33" r="3"/>
+    <circle cx="190" cy="39" r="3"/><circle cx="266" cy="148" r="3"/>
+    <circle cx="379" cy="33" r="3"/>
+    <circle cx="507" cy="37" r="3"/><circle cx="601" cy="145" r="3"/>
+  </g>
+</svg>

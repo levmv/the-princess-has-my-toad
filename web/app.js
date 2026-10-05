@@ -11,11 +11,11 @@ const text = {
  ru: {
   glideTip:'Планер: в воздухе отпусти пробел, нажми снова и удерживай.',
   kickTip:'F — пинок.',
-  premise:'Принцесса похитила жабу.\nБашня ждёт.',start:'Начать',resume:'Вернуться в башню',retry:'Повторить',ready:'Башня на связи.',loading:'Устанавливаем связь…',requirements:'Клавиатура и мышь · WebGL 2',keys:'WASD — движение · мышь — взгляд · Esc — пауза',fullscreen:'Полный экран',capture:'Нажми, чтобы управлять мышью',ended:'Башня всё ещё ждёт.',failed:'Не удалось запустить игру.',unsupported:'Нужен браузер с WebGL 2.',bootLabel:'Связь с башней',download:'Принимаем сигнал',compile:'Запускаем башню',phases:['Проверяем память','Включаем свет','Восстанавливаем надписи','Проявляем поверхности','Собираем обитателей','Готовим героев','Прокладываем тени','Открываем башню','Настраиваем звук','Последний штрих'],complete:'Жаба на месте. Пока.',paused:'Можно вернуться без загрузки.'},
+  start:'Начать',resume:'Вернуться в башню',retry:'Повторить',ready:'Башня на связи.',loading:'Устанавливаем связь…',requirements:'Клавиатура и мышь · WebGL 2',keys:'WASD — движение · мышь — взгляд · Esc — пауза',fullscreen:'Полный экран',capture:'Нажми, чтобы управлять мышью',ended:'Башня всё ещё ждёт.',failed:'Не удалось запустить игру.',unsupported:'Нужен браузер с WebGL 2.',bootLabel:'Связь с башней',download:'Принимаем сигнал',compile:'Запускаем башню',phases:['Проверяем память','Включаем свет','Восстанавливаем надписи','Проявляем поверхности','Собираем обитателей','Готовим героев','Прокладываем тени','Открываем башню','Настраиваем звук','Последний штрих'],complete:'Жаба на месте. Пока.',paused:'Можно вернуться без загрузки.'},
  en: {
   glideTip:'Glide: release Space in mid-air, then press and hold it again.',
   kickTip:'F — kick.',
-  premise:'The princess has stolen the toad.\nThe tower awaits.',start:'Enter',resume:'Return to the tower',retry:'Try again',ready:'Tower online.',loading:'Establishing contact…',requirements:'Keyboard & mouse · WebGL 2',keys:'WASD — move · mouse — look · Esc — pause',fullscreen:'Fullscreen',capture:'Click to capture the mouse',ended:'The tower is still waiting.',failed:'Could not start the game.',unsupported:'A browser with WebGL 2 is required.',bootLabel:'Tower connection',download:'Receiving signal',compile:'Starting the tower',phases:['Checking memory','Turning on the lights','Restoring the lettering','Revealing the surfaces','Assembling the inhabitants','Preparing the heroes','Tracing the shadows','Opening the tower','Tuning the sound','Finishing touches'],complete:'Toad accounted for. For now.',paused:'Ready to return. No reload needed.'}
+  start:'Enter',resume:'Return to the tower',retry:'Try again',ready:'Tower online.',loading:'Establishing contact…',requirements:'Keyboard & mouse · WebGL 2',keys:'WASD — move · mouse — look · Esc — pause',fullscreen:'Fullscreen',capture:'Click to capture the mouse',ended:'The tower is still waiting.',failed:'Could not start the game.',unsupported:'A browser with WebGL 2 is required.',bootLabel:'Tower connection',download:'Receiving signal',compile:'Starting the tower',phases:['Checking memory','Turning on the lights','Restoring the lettering','Revealing the surfaces','Assembling the inhabitants','Preparing the heroes','Tracing the shadows','Opening the tower','Tuning the sound','Finishing touches'],complete:'Toad accounted for. For now.',paused:'Ready to return. No reload needed.'}
 };
 let language = new URLSearchParams(location.search).get('lang') || (navigator.language.startsWith('ru') ? 'ru' : 'en');
 if (!text[language]) language = 'en';
@@ -36,7 +36,7 @@ function updateProgress(value) {
 }
 function localize() {
  document.documentElement.lang = language;
- for (const id of ['premise','requirements','glideTip','kickTip','keys','fullscreen','capture']) document.getElementById(id).innerText = text[language][id];
+ for (const id of ['requirements','glideTip','kickTip','keys','fullscreen','capture']) document.getElementById(id).innerText = text[language][id];
  startButton.textContent = text[language][failed?'retry':(parked?'resume':'start')];
  statusLine.textContent = text[language][failed?'failed':(parked?'ended':(ready?'ready':'loading'))];
  meter.setAttribute('aria-label',text[language].bootLabel);

@@ -60,6 +60,7 @@ settings_roundtrip_rebinding_and_corruption_fallback :: proc(t: ^testing.T) {
 	a.data.ambience, a.data.width, a.data.height, a.data.display = 0.2, 1920, 1080, .Borderless
 	a.data.render_scale, a.data.music = 0.5, 0.35
 	a.data.language, a.data.hero = .Russian, .Lora
+	a.data.wing_hint_seen = true
 	a.dirty = true
 	testing.expect_value(t, settings.flush(&a).kind, storage.Error_Kind.None)
 	settings.init(&b, directory)

@@ -1,6 +1,7 @@
 package main
 
 import "core:fmt"
+import "core:math"
 import rl "vendor:raylib"
 import game "game"
 import settings "settings"
@@ -38,8 +39,9 @@ menu_items :: proc(paused: bool, saves: ^storage.Store) -> ([6]Menu_Item, int) {
 }
 
 menu_row :: proc(ui: UI, page: Menu_Page, index: int) -> rl.Rectangle {
-	x, y, width := f32(64), f32(426+index*42), f32(460)
-	if page != .Root { y, width = f32(252+index*44), 580 }
+	x, y, width := ui.width*0.5-200, f32(466+index*42), f32(400)
+	if page != .Root { x, y, width = 64, f32(252+index*44), 580 }
+	if page == .New_Game { x, y, width = ui.width*0.5-260, f32(370+index*52), 520 }
 	if page == .Controls {
 		if index < CONTROL_COUNT { x, y, width = 64+f32(index/CONTROL_ROWS)*560, 254+f32(index%CONTROL_ROWS)*43, 520
 		} else { y = 616+f32(index-CONTROL_COUNT)*46 }
@@ -164,47 +166,66 @@ menu_button :: proc(ui: UI, m: ^Menu_State, index: int, title: string, value: st
 	bounds := menu_row(ui, m.page, index)
 	x, y, w := bounds.x/ui.scale, bounds.y/ui.scale, bounds.width/ui.scale
 	selected := m.selected == index
+	if m.page == .Root || m.page == .New_Game {
+		if selected {
+			rl.DrawRectangleRec(bounds, fade(INK, 0.6))
+			if enabled {
+				rect(ui, x+15, y+17, 12, 2, ORANGE)
+				rect(ui, x+w-27, y+17, 12, 2, ORANGE)
+			}
+		}
+		buffer: [160]u8
+		text := fmt.bprintf(buffer[:], "%s   < %s >", title, value) if len(value) > 0 else title
+		center_label(ui, text, x+w*0.5, y+9, 16, (ORANGE if selected else PAPER) if enabled else MUTED, 2)
+		return
+	}
 	if selected { rl.DrawRectangleRec(bounds, fade(ORANGE, 0.96) if enabled else fade(PAPER, 0.13)) }
 	color := (INK if selected else PAPER) if enabled else MUTED
 	label(ui, title, x+14, y+9, 16, color, 2)
 	if len(value) > 0 { label(ui, value, x+w-190, y+9, 15, color, 2) }
 }
 
+render_menu_background :: proc(r: ^Renderer, time: f32) {
+	// The opening owns the tower reveal. The title needs only the existing sky,
+	// without building a stage, uploading meshes or rendering a shadow pass.
+	resize_render_target(r)
+	camera := game.Camera{forward = game.normalized({math.sin(time*0.006), 0.2, -math.cos(time*0.006)}), fov = 58}
+	r.damage_flash = 0
+	rl.BeginTextureMode(r.target)
+	draw_sky(r, camera)
+	rl.EndTextureMode()
+	render_post_pass(r)
+}
+
 draw_menu_panel :: proc(r: ^Renderer, g: ^game.State, paused: bool, m: ^Menu_State, saves: ^storage.Store, prefs: ^settings.Store) {
 	ui := ui_context(r)
-	rl.DrawRectangleGradientH(0, 0, r.width, r.height, {6, 18, 24, 245}, {6, 18, 24, 80})
-	rect(ui, 64, 47, 28, 3, ORANGE)
-	label(ui, "THE PRINCESS HAS MY TOAD", 107, 38, 15, PAPER, 2, 1.2)
-	label(ui, tr(ui, .Demo), 132+text_width(ui, "THE PRINCESS HAS MY TOAD", 15, 2, 1.2), 40, 12, MUTED, 2)
+	if m.page == .Root || m.page == .New_Game {
+		rl.DrawRectangleGradientV(0, 0, r.width, r.height, {6, 12, 16, 165}, {6, 12, 16, 230})
+	} else {
+		rl.DrawRectangleGradientH(0, 0, r.width, r.height, {6, 18, 24, 245}, {6, 18, 24, 80})
+		rect(ui, 64, 47, 28, 3, ORANGE)
+		label(ui, "THE PRINCESS HAS MY TOAD", 107, 38, 15, PAPER, 2, 1.2)
+		rule(ui, 64, 87, ui.width-128, fade(PAPER, 0.16))
+	}
 	draw_language(ui)
-	rule(ui, 64, 87, ui.width-128, fade(PAPER, 0.16))
 	buf: [128]u8
 	switch m.page {
 	case .Root:
 		if paused {
-			label(ui, tr(ui, .Paused), 57, 137, 88, PAPER, 1, -3)
+			center_label(ui, tr(ui, .Paused), ui.width*0.5, 270, 72, PAPER, 1)
 		} else {
-			prefix :: "THE PRINCESS HAS MY"
-			label(ui, prefix, 299-text_width(ui, prefix, 19, 2, 2.4)*0.5, 139, 19, PAPER, 2, 2.4)
-			rl.DrawTexturePro(r.logo, {0, 0, f32(r.logo.width), f32(r.logo.height)}, {62*ui.scale, 173*ui.scale, 474*ui.scale, (474*200/664)*ui.scale}, {}, 0, rl.WHITE)
+			width := f32(700)
+			height := width*f32(r.logo.height)/f32(r.logo.width)
+			rl.DrawTexturePro(r.logo, {0, 0, f32(r.logo.width), f32(r.logo.height)}, {(ui.width-width)*0.5*ui.scale, (252-height*0.5)*ui.scale, width*ui.scale, height*ui.scale}, {}, 0, rl.WHITE)
 		}
-		label(ui, tr(ui, .Tagline), 65, 337, 22, PAPER)
-		subtitle := tr(ui, .Premise)
-		if game.sector_definition(g.world.sector.key).preview { subtitle = "Development fixture / unfinished sector" }
-		label(ui, subtitle, 65, 374, 16, MUTED)
+		if game.sector_definition(g.world.sector.key).preview {
+			center_label(ui, "Development fixture / unfinished sector", ui.width*0.5, 401, 13, MUTED)
+		}
 		items, count := menu_items(paused, saves)
 		for item, i in items[:count] { menu_button(ui, m, i, tr(ui, item.title), enabled = item.enabled) }
-		if !paused {
-			slot, found := storage.latest(saves)
-			if found {
-				info := saves.slots[slot]
-				title := game.sector_definition(info.sector).title if info.sector != .None else "FLIGHT RANGE"
-				label(ui, fmt.bprintf(buf[:], "%s / %s", title, game.difficulty_name(info.difficulty)), 65, 660, 13, MUTED, 2)
-			}
-		}
 	case .New_Game:
-		label(ui, tr(ui, .New_Game), 60, 145, 54, PAPER, 1)
-		label(ui, tr(ui, .New_Note), 65, 216, 14, MUTED)
+		center_label(ui, tr(ui, .New_Game), ui.width*0.5, 238, 52, PAPER, 1)
+		if saves.slots[.Checkpoint].valid { center_label(ui, tr(ui, .New_Note), ui.width*0.5, 559, 14, MUTED) }
 		menu_button(ui, m, 0, tr(ui, .Difficulty), game.difficulty_name(prefs.data.difficulty))
 		menu_button(ui, m, 1, tr(ui, .Begin))
 		menu_button(ui, m, 2, tr(ui, .Back))

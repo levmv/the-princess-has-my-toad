@@ -124,7 +124,7 @@ def quit_running_game():
     if is_bsod('before-quit'):
         key('Return'); pause(); screenshot('before-quit')
         assert not is_bsod('before-quit')
-    click(200,654)
+    click(640,694)
 
 if a.replay_video:
     assert any(v.startswith(b'--replay=') for v in cmd)

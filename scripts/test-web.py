@@ -77,8 +77,13 @@ with sync_playwright() as pw:
  assert metric(6)>shots+2,'Browser fire did not reach simulation'
  yaw=metric(10);page.mouse.move(850,360,steps=5);page.wait_for_timeout(160)
  assert abs(metric(10)-yaw)>0.01,'Pointer movement did not aim'
- key('Space')
- assert metric(18)>0,'Jump was not delivered'
+ jumps,glides=metric(18),metric(17)
+ page.keyboard.down('Space');page.wait_for_function('(n)=>wasm.toad_metric(18)>n',arg=jumps)
+ page.keyboard.up('Space');released=metric(1)
+ page.wait_for_function('(t)=>wasm.toad_metric(1)>t+.04',arg=released)
+ page.keyboard.down('Space');page.wait_for_function('(n)=>wasm.toad_metric(17)>n',arg=glides)
+ page.keyboard.up('Space')
+ page.wait_for_function('JSON.parse(atob(localStorage.getItem("the-princess-has-my-toad/config/settings.json")))?.wing_hint_seen===true')
  page.mouse.down(button='right');page.wait_for_timeout(400);page.screenshot(path='build/web-scope.png');page.mouse.up(button='right')
  key('F5')
  saved=[metric(i) for i in (2,3,4)]

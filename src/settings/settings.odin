@@ -19,6 +19,7 @@ Data :: struct {
 	sensitivity, effects, voice, ambience, music: f32,
 	render_scale: f32,
 	invert_y, muted: bool,
+	wing_hint_seen: bool,
 	display: Display,
 	width, height: int,
 	difficulty: game.Difficulty,

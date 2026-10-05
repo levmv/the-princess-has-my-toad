@@ -23,7 +23,7 @@ emcc build/web/game.o .tools/raylib-web/src/libraylib.web.a -o build/web/game.js
     -sERROR_ON_UNDEFINED_SYMBOLS=0 --js-library web/library.js
 cp "$(dirname "$ODIN")/core/sys/wasm/js/odin.js" build/web/odin.js
 cp web/app.js web/style.css build/web/
-cp assets/logo.svg build/web/
+cp assets/logo.png build/web/
 sed "s/__BUILD_ID__/$SOURCE_ID/g" web/index.html > build/web/index.html
 cp web/README.txt build/web/README.txt
 cp LICENSE THIRD_PARTY.md build/web/

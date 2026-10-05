@@ -1,6 +1,6 @@
 package game
 
-BUILD_VERSION :: "0.15.0"
+BUILD_VERSION :: "0.15.1"
 // Official build/bench scripts embed a source fingerprint. Direct Odin invocations
 // remain possible; their recordings are explicitly labelled development.
 // Quotes force -define to treat digit-leading hashes as strings. This Odin

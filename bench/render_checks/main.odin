@@ -194,7 +194,7 @@ main :: proc() {
 			context.allocator = mem.panic_allocator()
 			context.temp_allocator = mem.panic_allocator()
 			rl.BeginDrawing()
-			app.render_scene(&r, &v, game.camera(&v), g.time)
+			app.render_menu_background(&r, 4)
 			app.draw_menu_panel(&r, &g, false, &menu, &saves, &preferences)
 			rl.EndDrawing()
 		}

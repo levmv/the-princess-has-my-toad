@@ -29,6 +29,7 @@ Sector_Recipe :: struct {
 	region: Region,
 	generator_version: u32,
 	entry, exit: Location_Def,
+	wing_hint: Location_Def,
 	exit_rule: Exit_Rule,
 	mechanism: Mechanism_Kind,
 	mechanism_room: Room_ID,
@@ -121,6 +122,8 @@ ram_cold_boot :: proc() -> Sector_Recipe {
 	r.gates[0] = {room_object_id(1021, 0x600), 1003, 1021, {1003, {-15.25, 1.3, -5}}}
 	r.gate_count = 1
 	r.entry, r.exit = {1001, {0, 0.05, 12}}, {1020, {0, 0.05, -25}}
+	// The safe approach to the first gap, before the player reaches its lip.
+	r.wing_hint = {1003, {10, 0, 0}}
 	r.boss = {room_object_id(1020, 0x700), {1020, {0, 0, -7}}}
 	r.mechanism, r.mechanism_room, r.exit_rule = .Shot_Lift, 1017, .Reach
 	r.sections[room_index(&r, 1001)].intent = .Arrival

@@ -157,14 +157,8 @@ frontend_camera :: proc(s: ^front.State) -> game.Camera {
  return {position = p, target = target, forward = game.normalized(target-p), fov = fov}
 }
 
-render_frontend :: proc(r: ^Renderer, s: ^front.State, background: bool = false) {
+render_frontend :: proc(r: ^Renderer, s: ^front.State) {
  camera := frontend_camera(s)
- if background {
-  camera.position, camera.target, camera.fov = {8.5, 7, -15}, {0, 4.2, 0}, 44
-  camera.forward = game.normalized(camera.target-camera.position)
-  camera.target -= game.normalized(game.cross(camera.forward, game.Vec3{0, 1, 0}))*3.5
-  camera.forward = game.normalized(camera.target-camera.position)
- }
  time := s.animation
  v := game.Render_Snapshot{world = &r.theatre, hero = s.hero}
  v.player = {position = {0, 0.02, 0}, grounded = true, yaw = -0.15+math.sin(time*0.28)*0.28, pitch = -0.10, idle_time = 5+time}
@@ -178,13 +172,13 @@ render_frontend :: proc(r: ^Renderer, s: ^front.State, background: bool = false)
   object_instance(r, .Vent, {0, -0.02, 0}, {1.15, 0, 0}, {0, 0.045, 0}, {0, 0, 1.15}, {56, 63, 64, 255})
   ring3(r, {0, 0.03, 0}, 1.11, MINT if s.hero == .Lora else ORANGE)
   prepare_hero(r, &v, time, camera)
- } else if s.scene == 0 && !background { stage_frog(r, {}, 1.2, 1.3) }
+ } else if s.scene == 0 { stage_frog(r, {}, 1.2, 1.3) }
  else { stage_tower(r, time) }
  upload_instances(r)
  render_shadow(r, &v, camera, time)
  update_lighting(r, &v, camera)
  render_world_pass(r, &v, camera, time)
- if s.phase == .Intro && s.scene == 0 && !background { draw_missing_poster(r, s.elapsed) }
+ if s.phase == .Intro && s.scene == 0 { draw_missing_poster(r, s.elapsed) }
  else { render_post_pass(r) }
 }
 
@@ -243,7 +237,7 @@ draw_frontend_text :: proc(r: ^Renderer, s: ^front.State) {
  } else {
   rect(ui, 0, 0, ui.width, 97, {5, 12, 20, 255})
   rect(ui, 0, ui.height-206, ui.width, 206, {5, 12, 20, 255})
-  label(ui, "THE PRINCESS HAS MY TOAD / COLD BOOT", 64, 42, 13, MUTED, 2, 1.1)
+  label(ui, "THE PRINCESS HAS MY TOAD", 64, 42, 13, MUTED, 2, 1.1)
   lines := [3]string{tr(ui, .Scene_0), tr(ui, .Scene_1), tr(ui, .Scene_2)}
   center_label(ui, lines[min(s.scene, len(lines)-1)], ui.width*0.5, ui.height-145, 30, PAPER)
   label(ui, tr(ui, .Next), 64, ui.height-40, 11, MUTED, 2)

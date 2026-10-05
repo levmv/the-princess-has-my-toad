@@ -16,6 +16,7 @@ Play_Session :: struct {
 	checkpoint_sequence: u32,
 	cheat: game.Cheat_Entry,
 	death: front.Death_Screen,
+	wing_hint: front.Wing_Hint,
 	tape: ^replay.Tape,
 	record_path: string,
 }

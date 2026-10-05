@@ -211,6 +211,10 @@ validate_sector :: proc(r: ^Sector_Recipe) -> (Content_Error, int) {
 		p, ok := resolve_location(r, at)
 		if !ok || room_at(r, p) != room_index(r, at.room) { return .Location, -1 }
 	}
+	if r.wing_hint.room != 0 {
+		p, ok := resolve_location(r, r.wing_hint)
+		if !ok || room_at(r, p) != room_index(r, r.wing_hint.room) { return .Location, -1 }
+	}
 	for i in 0..<r.checkpoint_count {
 		c := r.checkpoints[i]
 		p, ok := resolve_location(r, c.at)

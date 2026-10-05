@@ -72,7 +72,7 @@ application_init :: proc(a: ^Application, prepare_renderer: bool = true, prepare
 	when ODIN_OS != .JS { flags += {.WINDOW_RESIZABLE} }
 	if a.window_msaa { flags += {.MSAA_4X_HINT} }
 	rl.SetConfigFlags(flags)
-	rl.InitWindow(i32(a.prefs.data.width), i32(a.prefs.data.height), "THE PRINCESS HAS MY TOAD / Cold Boot")
+	rl.InitWindow(i32(a.prefs.data.width), i32(a.prefs.data.height), "THE PRINCESS HAS MY TOAD")
 	if !rl.IsWindowReady() { return false }
 	rl.SetWindowMinSize(960, 600)
 	rl.SetExitKey(.KEY_NULL)
@@ -203,6 +203,7 @@ application_frame :: proc(a: ^Application) -> bool {
     if a.g.world.seed != a.seed || a.g.world.sector.key != wanted { game.world_load_sector(a.g.world, wanted, a.seed) }
     a.g.run = game.Run_State{difficulty = a.prefs.data.difficulty, hero = a.opening.hero}
     game.init(&a.g)
+    a.session.wing_hint = {}
     a.menu.page, a.menu.selected = .Root, 0
     session_resume(&a.session, &a.g, &a.audio)
     session_save(&a.saves, &a.g, .Checkpoint, &a.menu)
@@ -252,6 +253,13 @@ application_frame :: proc(a: ^Application) -> bool {
 		sim_start := rl.GetTime()
 		session_simulate(&a.session, &a.g, input, dt, &a.audio)
 		a.sim_ms = a.sim_ms*0.9+(rl.GetTime()-sim_start)*1000*0.1
+		if !a.session.death.active && !a.tape.playing && !a.smoke {
+			seen := a.prefs.data.wing_hint_seen
+			near := !seen && !a.session.wing_hint.active && front.wing_hint_near(a.g.world, a.g.player.position)
+			if front.wing_hint_update(&a.session.wing_hint, seen, near, a.g.glide_sequence > 0, dt) {
+				a.prefs.data.wing_hint_seen, a.prefs.dirty = true, true
+			}
+		}
 		if a.g.checkpoint_sequence != a.session.checkpoint_sequence || (a.g.won && !was_won) {
 			session_save(&a.saves, &a.g, .Checkpoint, &a.menu)
 			a.session.checkpoint_sequence = a.g.checkpoint_sequence
@@ -289,8 +297,7 @@ application_frame :: proc(a: ^Application) -> bool {
    draw_death_screen(&a.renderer, a.session.death)
   } else {
    if !a.session.started {
-    background := front.State{phase = .Intro, scene = 1, elapsed = 3, animation = time}
-    render_frontend(&a.renderer, &background, background = true)
+    render_menu_background(&a.renderer, time)
    } else { render_scene(&a.renderer, &a.view, cam, time) }
 	draw_debug_ai(&a.renderer, &a.g, cam)
 	if !a.session.started || a.session.paused {
@@ -298,6 +305,7 @@ application_frame :: proc(a: ^Application) -> bool {
 	} else {
 		draw_markers(&a.renderer, &a.g, cam)
 		draw_hud(&a.renderer, &a.g, a.session.was_focused, a.debug, a.audio.muted, a.sim_ms, a.frame_ms, a.p95, &a.prefs.data)
+		if !a.g.won { draw_wing_hint(&a.renderer, a.session.wing_hint.opacity, &a.prefs.data) }
 		if a.g.won { draw_win(&a.renderer, &a.g) }
 	}
 	draw_notice(&a.renderer, &a.menu, a.session.started && !a.session.paused)

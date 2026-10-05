@@ -21,6 +21,7 @@ main :: proc() {
 	selected := 0
 	opening := len(os.args) > 2 && os.args[2] == "intro"
 	feedback := len(os.args) > 2 && os.args[2] == "feedback"
+	wing_hint := len(os.args) > 2 && os.args[2] == "wing-hint"
 	airways := len(os.args) > 2 && os.args[2] == "airways"
 	supplies := len(os.args) > 2 && os.args[2] == "supplies"
 	landmarks := len(os.args) > 2 && os.args[2] == "landmarks"
@@ -34,7 +35,7 @@ main :: proc() {
 	anvil := len(os.args) > 2 && os.args[2] == "anvil"
 	deaths := len(os.args) > 2 && os.args[2] == "deaths"
 	hero := len(os.args) > 2 && os.args[2] == "hero"
-	if len(os.args) > 2 && !actors && !weapons && !arsenal && !gates && !boss && !anvil && !deaths && !hero && !opening && !airways && !feedback && !supplies && !landmarks && !lift {
+	if len(os.args) > 2 && !actors && !weapons && !arsenal && !gates && !boss && !anvil && !deaths && !hero && !opening && !airways && !feedback && !supplies && !landmarks && !lift && !wing_hint {
 		id, ok := strconv.parse_int(os.args[2])
 		assert(ok && id >= 0 && id <= 65535)
 		selected = id
@@ -67,6 +68,7 @@ main :: proc() {
 	if lift { survey_lift(&r, &g, prefix); return }
 	if opening { survey_intro(&r, &g, prefix); return }
 	if feedback { survey_feedback(&r, &g, prefix); return }
+	if wing_hint { survey_wing_hint(&r, &g, prefix); return }
 	if actors { survey_actors(&r, &g, prefix, actors_back); return }
 	if weapons { survey_weapons(&r, &g, prefix); return }
 	if arsenal { survey_arsenal(&r, &g, prefix); return }
@@ -349,7 +351,8 @@ survey_intro :: proc(r: ^app.Renderer, g: ^game.State, prefix: string) {
    if shot >= 7 { s.scene = 1 }
    for _ in 0..<2 {
     rl.BeginDrawing()
-    app.render_frontend(r, &s, background = shot == 7)
+    if shot == 7 { app.render_menu_background(r, s.animation) }
+    else { app.render_frontend(r, &s) }
     if shot < 7 { app.draw_frontend_text(r, &s) }
     else if shot == 7 { menu := app.Menu_State{binding = -1, selected = 1}; app.draw_menu_panel(r, g, false, &menu, &saves, &prefs) }
     else { app.draw_win(r, g) }

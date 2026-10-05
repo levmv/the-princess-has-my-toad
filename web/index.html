@@ -5,65 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#111816">
 <link rel="icon" href="data:,">
-<title>The Princess Has My Toad — Cold Boot</title>
+<title>The Princess Has My Toad</title>
 <link rel="stylesheet" href="style.css?v=__BUILD_ID__">
 </head>
 <body>
 <main id="stage">
   <canvas id="canvas" width="1280" height="800" tabindex="0" aria-label="The Princess Has My Toad game"></canvas>
   <section id="cover" data-state="loading">
-    <div class="cover-copy">
-      <p class="edition">COLD BOOT / PLAYABLE DEMO</p>
-      <h1><span class="logo-kicker">THE PRINCESS HAS MY</span><img src="logo.svg?v=__BUILD_ID__" width="664" height="200" alt="TOAD"></h1>
-      <p id="premise">Принцесса похитила жабу.<br>Башня ждёт.</p>
-      <p id="status" role="status">Устанавливаем связь…</p>
-      <button id="start" disabled>Начать</button>
+    <header class="cover-header">
       <div class="languages"><button id="ru" aria-pressed="true">РУС</button><button id="en" aria-pressed="false">ENG</button></div>
+    </header>
+    <h1><img src="logo.png?v=__BUILD_ID__" width="1984" height="793" alt="The Princess Has My Toad"></h1>
+    <div class="cover-actions">
+      <p id="status" class="sr-only" role="status">Устанавливаем связь…</p>
+      <button id="start" disabled>Начать</button>
       <p id="requirements">Клавиатура и мышь · WebGL 2</p>
-      <div class="control-hints">
-        <p id="glideTip">Планер: в воздухе отпусти пробел, нажми снова и удерживай.</p>
-        <p id="kickTip">F — пинок.</p>
-      </div>
     </div>
     <div class="boot-panel">
-      <div class="boot-heading"><span>TOAD / TOWER LINK</span><span class="signal-led"></span></div>
-      <svg class="tower" viewBox="0 0 340 370" aria-hidden="true">
-        <defs>
-          <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".65" fill="#749688" opacity=".25"/></pattern>
-          <linearGradient id="case" x2="1" y2="1"><stop stop-color="#33493b"/><stop offset="1" stop-color="#15261e"/></linearGradient>
-          <clipPath id="front"><path d="M94 72 232 88 232 314 94 294Z"/></clipPath>
-        </defs>
-        <path fill="url(#dots)" d="M0 0H340V370H0Z"/>
-        <g fill="none" stroke="#6c947a" stroke-width="1" opacity=".3">
-          <path d="M22 253H66L88 275M16 265H55L79 289M238 113H279L306 86V45M236 131H291L321 103V64M188 336V352H287M153 329V362H253"/>
-          <circle cx="22" cy="253" r="3"/><circle cx="306" cy="45" r="3"/><circle cx="321" cy="64" r="3"/><circle cx="287" cy="352" r="3"/>
-        </g>
-        <ellipse cx="170" cy="319" rx="113" ry="15" fill="#030b07" opacity=".65"/>
-        <path d="M94 72 142 46 278 61 232 88Z" fill="#354c3d" stroke="#819a7e"/>
-        <path d="M232 88 278 61 278 287 232 314Z" fill="#101d17" stroke="#597861"/>
-        <path d="M94 72 232 88 232 314 94 294Z" fill="url(#case)" stroke="#a1ac8b"/>
-        <path d="M102 294V305L116 307V297M214 311V320L229 322V315" fill="#84937b"/>
-        <g class="boot-fill" clip-path="url(#front)"><path d="M89 62H240V318H89Z" fill="#7cf0af" opacity=".15"/></g>
-        <g fill="#0c1811" stroke="#82977b" stroke-width=".8">
-          <path d="m107 89 111 13v26l-111-14Z"/><path d="m107 124 111 13v26l-111-14Z"/>
-          <path d="m109 171 100 12v43l-100-13Z"/>
-        </g>
-        <path class="drive-light" d="m190 149 14 2" stroke="#e0a262" stroke-width="3"/>
-        <path d="m120 103 73 9m-73 26 73 9" stroke="#385442" stroke-width="3"/>
-        <g class="toad" fill="#b8c58d">
-          <path d="m142 202 1-11 8-2 7 5 8-1 7 8-5 8-21-2Z"/>
-          <circle cx="149" cy="189" r="5"/><circle cx="163" cy="191" r="5"/>
-          <path d="m142 202-8 7 13-1m22-4 8 9-13-3"/>
-          <g class="toad-eyes" fill="#102117"><circle cx="150" cy="188" r="1.8"/><circle cx="164" cy="190" r="1.8"/></g>
-        </g>
-        <g stroke="#86a789" opacity=".5"><path d="m121 240 82 11m-82-3 82 11m-82-3 82 11m-82-3 82 11m-82-3 82 11"/></g>
-        <circle cx="211" cy="236" r="3" class="power-led" fill="#85d5a8"/>
-        <path class="signal-pulse" d="M30 326H69L79 307 91 345 105 316 115 329H204" fill="none" stroke="#d79656" stroke-width="1.4"/>
-        <text x="32" y="27" fill="#7f9985" font-size="9" font-family="monospace" letter-spacing="2">640 KB / TOAD DETECTED</text>
-      </svg>
+      <div class="boot-heading"><span>SIGNAL / 640 KB</span><span class="signal-led"></span></div>
       <div class="boot-readout"><span id="boot-phase">Принимаем сигнал</span><span id="boot-number" aria-hidden="true">000%</span></div>
       <div id="boot-meter" role="progressbar" aria-label="Связь с башней" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
       <p id="boot-detail"></p>
+    </div>
+    <div class="control-hints">
+      <p id="glideTip">Планер: в воздухе отпусти пробел, нажми снова и удерживай.</p>
+      <p id="kickTip">F — пинок.</p>
     </div>
   </section>
   <button id="capture" hidden>Нажми, чтобы управлять мышью</button>

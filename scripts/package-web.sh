@@ -25,7 +25,7 @@ from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
 root = Path('build/web')
 files = [root / name for name in (
-    'index.html', 'app.js', 'style.css', 'logo.svg', 'game.js', 'game.wasm', 'odin.js',
+    'index.html', 'app.js', 'style.css', 'logo.png', 'game.js', 'game.wasm', 'odin.js',
     'build-id.txt', 'README.txt', 'LICENSE', 'THIRD_PARTY.md')]
 files += sorted((root / 'licenses').glob('*.txt'))
 with ZipFile('build/the-princess-has-my-toad-web.zip', 'w', ZIP_DEFLATED, compresslevel=9) as archive:

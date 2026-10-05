@@ -6,7 +6,6 @@ import "core:mem"
 import rl "vendor:raylib"
 import loc "locale"
 import settings "settings"
-import front "front"
 
 web_context: runtime.Context
 web_app: ^Application
@@ -64,9 +63,8 @@ toad_boot_step :: proc "c" () -> f64 {
 	case 9:
 		a.renderer.language = a.prefs.data.language
 		a.renderer.render_scale = a.prefs.data.render_scale
-		preview := front.State{phase = .Intro, scene = 1, elapsed = 3}
 		rl.BeginDrawing()
-		render_frontend(&a.renderer, &preview, background = true)
+		render_menu_background(&a.renderer, 0)
 		rl.EndDrawing()
 	}
 	web_boot_times[web_boot_stage] += emscripten_get_now()-start

@@ -160,10 +160,11 @@ draw_hud :: proc(r: ^Renderer, g: ^game.State, focused, debug, muted: bool, sim_
 	rounds := p.shotgun_ammo if p.weapon == .Shotgun else p.fragment_ammo
 	ammo := fmt.bprintf(buf[:], "%02d %s", rounds, tr(ui, .Shells if p.weapon == .Shotgun else .Charges)) if p.weapon != .Repeater else tr(ui, .Unlimited)
 	label(ui, ammo, ui.width-223, ui.height-92, 21, PAPER if p.weapon == .Repeater || rounds > 0 else ORANGE, 1)
-	if p.fragment_unlocked { label(ui, fmt.bprintf(buf[:], "02 / %02d", p.fragment_ammo), ui.width-193, ui.height-135, 10, ORANGE, 2) }
-	if p.shotgun_unlocked { label(ui, fmt.bprintf(buf[:], "03 / %02d", p.shotgun_ammo), ui.width-103, ui.height-135, 10, ORANGE, 2) }
+	if p.shotgun_unlocked { label(ui, fmt.bprintf(buf[:], "02 / %02d", p.shotgun_ammo), ui.width-193, ui.height-135, 10, ORANGE, 2) }
+	if p.fragment_unlocked { label(ui, fmt.bprintf(buf[:], "03 / %02d", p.fragment_ammo), ui.width-103, ui.height-135, 10, ORANGE, 2) }
 	label(ui, fmt.bprintf(buf[:], "%s  %d / %d", tr(ui, .Hostiles), g.kills, g.enemy_total), ui.width-194, ui.height-51, 11, MUTED, 2)
 	if muted { label(ui, tr(ui, .Muted), ui.width-83, ui.height-22, 10, MUTED, 2) }
+	draw_level_title(ui, g)
 	if g.message_time > 0 && (g.world.kind == .Arena || g.message >= 10 && g.message <= 13) {
 		text := "JUMP, RELEASE, THEN PRESS + HOLD TO GLIDE. RIDE THE GREEN UPDRAFTS."
 		if g.message == 2 { text = "SIGNAL RECOVERED / BACK AT YOUR LAST CHECKPOINT" }
@@ -184,6 +185,15 @@ draw_hud :: proc(r: ^Renderer, g: ^game.State, focused, debug, muted: bool, sim_
 	}
 }
 
+draw_level_title :: proc(ui: UI, g: ^game.State) {
+	if g.world.sector.key == .None || g.won || g.time <= 0.35 || g.time >= 5.5 { return }
+	// Use the level clock: pausing stops the fade, and loading later progress
+	// does not restart an introductory caption. This needs no saved UI state.
+	opacity := min(clamp((g.time-0.35)/0.65, 0, 1), clamp((5.5-g.time)/1.2, 0, 1))
+	title := tr(ui, .Cold_Boot) if g.world.sector.key == .RAM_Bank_01 else game.sector_definition(g.world.sector.key).title
+	center_label(ui, title, ui.width*0.5, 155, 30, fade(PAPER, opacity), 1)
+}
+
 draw_win :: proc(r: ^Renderer, g: ^game.State) {
 	ui := ui_context(r)
 	rect(ui, 0, 0, ui.width, ui.height, {5, 20, 27, 220})
@@ -195,8 +205,7 @@ draw_win :: proc(r: ^Renderer, g: ^game.State) {
 	label(ui, fmt.bprintf(buf[:], "%02d:%02d   /   %s %d / %d", int(g.time)/60, int(g.time)%60, tr(ui, .Hostiles), g.kills, g.enemy_total), x, 380, 14, MUTED, 2)
 	rule(ui, x, 422, 500, fade(MINT, 0.4))
 	if g.world.sector.key == .RAM_Bank_01 {
-  label(ui, tr(ui, .End_Demo), x, 464, 22, MINT, 1)
-  label(ui, tr(ui, .End_Line), x, 510, 17, PAPER)
-  label(ui, tr(ui, .End_Menu), x, 575, 13, PAPER, 2)
+  label(ui, tr(ui, .End_Line), x, 464, 17, PAPER)
+  label(ui, tr(ui, .End_Menu), x, 529, 13, PAPER, 2)
  } else { label(ui, "ENTER / CONTINUE    ESC / MENU" if game.campaign_next(g) != .None else "ESC / MENU", x, 510, 13, PAPER, 2) }
 }

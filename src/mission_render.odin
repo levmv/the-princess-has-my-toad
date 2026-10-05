@@ -51,7 +51,6 @@ draw_mission_objects :: proc(r: ^Renderer, g: ^game.Render_Snapshot, time: f32) 
 
 // Physical targets need no interaction prompt.
 draw_mission_hud :: proc(ui: UI, g: ^game.State, use_key: string = "E") {
-	label(ui, g.world.sector.title, 34, 29, 17, PAPER, 1)
 	if game.gate_target(g.world, &g.player) >= 0 {
 		buffer: [64]u8
 		text := fmt.bprintf(buffer[:], "[%s]", use_key)

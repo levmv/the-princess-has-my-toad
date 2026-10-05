@@ -47,12 +47,12 @@ with sync_playwright() as pw:
   assert [preferences['width'],preferences['height']]==[1280,800],preferences
   # Menu mouse hit testing also needs the correct backing-pixel transform.
   rect=page.locator('#canvas').bounding_box();scale=min(initial['render'][0]/1280,initial['render'][1]/800)
-  page.mouse.click(rect['x']+180*scale/dpr,rect['y']+486*scale/dpr,delay=85)
+  page.mouse.click(rect['x']+rect['width']/2,rect['y']+526*scale/dpr,delay=85)
   page.wait_for_timeout(150)
   # Fresh root has Quit last; select it from a known top using Home is unsupported.
   # Escape leaves the submenu entered by the above click, then click root Quit.
   page.keyboard.press('Escape');page.wait_for_timeout(150)
-  page.mouse.click(rect['x']+180*scale/dpr,rect['y']+610*scale/dpr,delay=85)
+  page.mouse.click(rect['x']+rect['width']/2,rect['y']+652*scale/dpr,delay=85)
   page.wait_for_function('!running&&parked',timeout=10000)
   assert page.locator('#start').is_enabled()
   before=page.evaluate('({memory:wasm.memory.buffer.byteLength,steps:[...bootTimings.steps],resources:performance.getEntriesByType("resource").filter(e=>e.name.includes("game.wasm")).length})')
